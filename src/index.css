@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@layer base {
+   :root {
+    --color-plum: #381932;
+    --color-milk: #FFF3E6;
+  }
+   html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: "Old Standard TT", serif;
+    color: var(--color-milk);
+    background-color: var(--color-plum);
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Liquid typography: gradient clipped to text shape */
+.liquid-letter {
+  display: inline-block;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+}
+
+/* Hero component static styles */
+.hero-ripple-canvas {
+  will-change: transform;
+}
+
+.hero-space-char {
+  display: inline-block;
+  width: 0.3em;
+}
+
+.hero-headline {
+  perspective: 800px;
+}
+
+.hero-tagline {
+  color: var(--color-milk);
+}
