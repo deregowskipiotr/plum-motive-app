@@ -162,14 +162,14 @@ export const Navbar = () => {
                   initial="hidden"
                   animate="visible"
                   className={`relative uppercase transition-colors duration-300 text-sm tracking-wide py-1 ${
-                    isActive ? "text-(--color-milk)" : "text-(--color-milk)/70 hover:text-(--color-milk)"
+                    isActive ? "text-[#C97E5A]" : "text-(--color-milk)/70 hover:text-(--color-milk)"
                   }`}
                   onClick={() => setActiveSection(item.id)} // Optimistic update
                 >
                   {item.label}
                   {/* Active Border Bottom Indicator */}
                   <motion.span
-                    className="absolute bottom-0 left-0 h-px bg-linear-to-r from-(--color-milk)/20 to-(--color-milk)"
+                    className="absolute bottom-0 left-0 h-px bg-linear-to-r from-[#C97E5A]/20 to-[#C97E5A]"
                     initial={false}
                     animate={{ width: isActive ? "100%" : "0%" }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -244,7 +244,7 @@ export const Navbar = () => {
                     {link.label}
                     {/* Active Border Bottom Indicator for Mobile */}
                     <motion.span
-                      className="absolute bottom-0 left-0 h-px bg-(--color-milk)"
+                      className="absolute bottom-0 left-0 h-px bg-[#C97E5A]"
                       initial={false}
                       animate={{ width: isActive ? "100%" : "0%" }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}

@@ -16,7 +16,7 @@ export const PrimaryButton = ({ children, className = '', onClick }: PrimaryButt
         rounded-md border border-(--color-milk)/20
         bg-(--color-milk)/5 text-(--color-milk) 
         shadow-[2px_2px_10px_rgba(0,0,0,0.2)]
-        hover:shadow-[0px_5px_20px_var(--color-milk)] hover:shadow-(--color-milk)/5
+        hover:shadow-[0px_5px_20px_var(--color-milk)] hover:shadow-[#C97E5A]
         hover:bg-(--color-milk)/10 hover:border-(--color-milk)/50
         transition-all duration-700 ease-out cursor-pointer
         font-light tracking-widest

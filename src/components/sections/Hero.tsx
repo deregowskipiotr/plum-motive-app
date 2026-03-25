@@ -102,10 +102,10 @@ const RippleCanvas = memo(({ ripples }: { ripples: Ripple[] }) => {
           if (ringRadius <= 0) continue;
 
           const gradient = ctx.createRadialGradient(r.x, r.y, ringRadius * 0.5, r.x, r.y, ringRadius);
-          gradient.addColorStop(0, `rgba(255,243,230,0)`);
-          gradient.addColorStop(0.6, `rgba(255,220,180,${r.opacity * (0.6 - ring * 0.15)})`);
-          gradient.addColorStop(0.85, `rgba(255,243,230,${r.opacity * (0.3 - ring * 0.08)})`);
-          gradient.addColorStop(1, `rgba(255,243,230,0)`);
+          gradient.addColorStop(0, `rgba(201,126,90,0)`);
+          gradient.addColorStop(0.6, `rgba(201,126,90,${r.opacity * (0.6 - ring * 0.15)})`);
+          gradient.addColorStop(0.85, `rgba(201,126,90,${r.opacity * (0.3 - ring * 0.08)})`);
+          gradient.addColorStop(1, `rgba(201,126,90,0)`);
 
           ctx.beginPath();
           ctx.arc(r.x, r.y, ringRadius, 0, Math.PI * 2);
@@ -215,14 +215,14 @@ const AnimatedLetter = memo(
     const gradImageStyle = useMemo((): React.CSSProperties => {
       if (!hasFinePointer || reducedMotion) {
         return {
-          backgroundImage: "linear-gradient(135deg, #FFF3E6 0%, #FFDCB4 50%, #FFF3E6 100%)",
+          backgroundImage: "linear-gradient(135deg, #FFF3E6 0%, #C97E5A 50%, #FFF3E6 100%)",
         };
       }
       const gx = gradientX;
       const angle = Math.round(90 + (gx - 50) * 1.2);
       const midStop = Math.round(20 + (gx / 100) * 60);
       return {
-        backgroundImage: `linear-gradient(${angle}deg, rgba(255,243,230,1) 0%, rgba(255,243,230,0.85) ${Math.max(midStop - 15, 0)}%, rgba(255,220,165,1) ${midStop}%, rgba(255,243,230,0.9) ${Math.min(midStop + 20, 100)}%, rgba(255,243,230,1) 100%)`,
+        backgroundImage: `linear-gradient(${angle}deg, rgba(255,243,230,1) 0%, rgba(255,243,230,0.85) ${Math.max(midStop - 15, 0)}%, rgba(201,126,90,1) ${midStop}%, rgba(255,243,230,0.9) ${Math.min(midStop + 20, 100)}%, rgba(255,243,230,1) 100%)`,
       };
     }, [gradientX, isHovering, hasFinePointer, reducedMotion]);
 
@@ -231,7 +231,7 @@ const AnimatedLetter = memo(
       if (!hasFinePointer || reducedMotion || !isHovering) return undefined;
       const gx = gradientX;
       const gy = gradientY;
-      return `drop-shadow(${(gx - 50) * 0.08}px ${(gy - 50) * 0.06}px 6px rgba(255,220,165,0.25))`;
+      return `drop-shadow(${(gx - 50) * 0.08}px ${(gy - 50) * 0.06}px 6px rgba(201,126,90,0.4))`;
     }, [gradientX, gradientY, isHovering, hasFinePointer, reducedMotion]);
 
     const letterVariants: Variants = {
@@ -296,6 +296,8 @@ const Hero = () => {
 
   const sectionRef = useRef<HTMLElement>(null);
 
+  const [isIndicatorHovered, setIsIndicatorHovered] = useState(false);
+
   // Raw cursor motion values (section-relative px)
   const rawCursorX = useMotionValue(0);
   const rawCursorY = useMotionValue(0);
@@ -354,17 +356,17 @@ const Hero = () => {
       const droplet: Droplet = {
         id,
         x: 5 + Math.random() * 90,
-        size: 2 + Math.random() * 4,
-        duration: 2.2 + Math.random() * 1.8,
-        delay: Math.random() * 0.4,
+        size: 2 + Math.random() * 5,
+        duration: 1.8 + Math.random() * 1.5,
+        delay: Math.random() * 0.2,
       };
-      setDroplets((prev) => [...prev.slice(-10), droplet]);
+      setDroplets((prev) => [...prev.slice(-20), droplet]);
       setTimeout(() => setDroplets((prev) => prev.filter((d) => d.id !== id)), (droplet.duration + droplet.delay) * 1000 + 200);
     };
 
     const id = setInterval(() => {
-      if (Math.random() > 0.45) spawnDroplet();
-    }, 700);
+      if (Math.random() > 0.25) spawnDroplet();
+    }, 450);
     return () => clearInterval(id);
   }, [reducedMotion]);
 
@@ -401,7 +403,6 @@ const Hero = () => {
       ref={sectionRef}
       id="home"
       className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-80 overflow-hidden select-none z-0"
-      style={{ cursor: hasFinePointer ? "grab" : "default" }}
       onMouseMove={hasFinePointer ? handleMouseMove : undefined}
       onMouseEnter={() => hasFinePointer && setIsHovering(true)}
       onMouseLeave={() => {
@@ -429,10 +430,10 @@ const Hero = () => {
           className="absolute inset-0 pointer-events-none z-0 opacity-15"
           animate={{
             background: [
-              "radial-gradient(circle at 18% 45%, rgba(255,220,160,0.06) 0%, transparent 55%)",
-              "radial-gradient(circle at 82% 60%, rgba(255,220,160,0.06) 0%, transparent 55%)",
-              "radial-gradient(circle at 45% 25%, rgba(255,220,160,0.06) 0%, transparent 55%)",
-              "radial-gradient(circle at 18% 45%, rgba(255,220,160,0.06) 0%, transparent 55%)",
+              "radial-gradient(circle at 18% 45%, rgba(201,126,90,0.06) 0%, transparent 55%)",
+              "radial-gradient(circle at 82% 60%, rgba(201,126,90,0.06) 0%, transparent 55%)",
+              "radial-gradient(circle at 45% 25%, rgba(201,126,90,0.06) 0%, transparent 55%)",
+              "radial-gradient(circle at 18% 45%, rgba(201,126,90,0.06) 0%, transparent 55%)",
             ],
           }}
           transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
@@ -451,7 +452,8 @@ const Hero = () => {
       >
         {/* Headline with per-letter spring physics */}
         <h1
-          className="text-5xl sm:text-7xl md:text-7xl lg:text-9xl font-semibold text-center leading-none tracking-tighter hero-headline"
+          className="text-5xl sm:text-7xl md:text-7xl lg:text-9xl font-semibold text-center leading-none tracking-tight hero-headline"
+          style={{ cursor: hasFinePointer ? "grab" : "default" }}
         >
           {headline.split("").map((char, i) => (
             <AnimatedLetter
@@ -493,13 +495,14 @@ const Hero = () => {
               width: droplet.size,
               height: droplet.size * 2.5,
               background:
-                "linear-gradient(180deg, rgba(255,243,230,0.55) 0%, rgba(255,220,160,0.3) 60%, transparent 100%)",
+                "linear-gradient(180deg, rgba(255,243,230,0.9) 0%, rgba(201,126,90,0.6) 60%, transparent 100%)",
+              boxShadow: "0 0 4px rgba(201,126,90,0.4)",
               willChange: "transform, opacity",
             }}
             initial={{ y: -30, opacity: 0, scaleX: 0.6 }}
             animate={{
               y: "100vh",
-              opacity: [0, 0.8, 0.6, 0],
+              opacity: [0, 0.9, 0.7, 0],
               scaleX: [0.6, 1, 0.8, 0.6],
             }}
             transition={{
@@ -515,12 +518,22 @@ const Hero = () => {
         variants={scrollLineVariants}
         initial="hidden"
         animate="visible"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10 cursor-pointer"
+        onClick={() => {
+          document.getElementById("our-story")?.scrollIntoView({ behavior: "smooth" });
+        }}
+        onMouseEnter={() => setIsIndicatorHovered(true)}
+        onMouseLeave={() => setIsIndicatorHovered(false)}
       >
         {/* Vertical line */}
         <motion.div
-          className="w-px origin-top"
-          style={{ height: 40, background: "linear-gradient(180deg, rgba(255,243,230,0.5) 0%, transparent 100%)" }}
+          className="w-px origin-top transition-colors duration-500"
+          style={{
+            height: 40,
+            background: isIndicatorHovered
+              ? "linear-gradient(180deg, rgba(201,126,90,0.9) 0%, transparent 100%)"
+              : "linear-gradient(180deg, rgba(201,126,90,0.5) 0%, transparent 100%)",
+          }}
           animate={reducedMotion ? {} : { scaleY: [1, 0.6, 1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -528,8 +541,12 @@ const Hero = () => {
         {/* Falling drop */}
         {!reducedMotion && (
           <motion.div
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ background: "rgba(255,243,230,0.55)" }}
+            className="w-1.5 h-1.5 rounded-full transition-colors duration-500"
+            style={{
+              background: isIndicatorHovered
+                ? "linear-gradient(180deg, rgba(201,126,90,0.9) 0%, transparent 100%)"
+                : "linear-gradient(180deg, rgba(201,126,90,0.55) 0%, transparent 100%)",
+            }}
             animate={{
               y: [0, 12, 0],
               opacity: [0.55, 0.2, 0.55],
@@ -541,8 +558,13 @@ const Hero = () => {
 
         {/* Scroll text */}
         <motion.span
-          className="text-xs uppercase tracking-[0.25em] mt-1"
-          style={{ color: "rgba(255,243,230,0.35)", fontSize: "0.6rem" }}
+          className="text-xs uppercase tracking-[0.25em] mt-1   transition-colors duration-500"
+          style={{
+            color: isIndicatorHovered
+              ? "rgba(201,126,90,0.9)"
+              : "rgba(201,126,90,0.35)",
+            fontSize: "0.6rem",
+          }}
           animate={reducedMotion ? {} : { opacity: [0.35, 0.6, 0.35] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >
