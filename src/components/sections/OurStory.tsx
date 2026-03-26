@@ -78,7 +78,7 @@ const OurStory = () => {
   return (
     <section
       id="our-story"
-      className="min-h-screen flex flex-col items-center justify-center bg-(--color-plum) relative overflow-hidden py-20 md:py-0"
+      className="min-h-screen flex flex-col items-center justify-center bg-(--color-plum) relative overflow-hidden pt-20 md:pt-0"
     >
       {/* Background gradient overlay matching hero style */}
       <div className="absolute inset-0 bg-linear-to-r from-transparent via-(--color-plum)/10 to-black/10 pointer-events-none" />

@@ -1,4 +1,5 @@
 import React from "react";
+import { Sparkles, Zap, Crown, Star } from "lucide-react";
 
 export interface NavLink {
   id: any;
@@ -43,4 +44,53 @@ export const quotes = [
   "Let's create something extraordinary together, blending aesthetics with profound functionality.",
   "Every great design begins with an even better story.",
   "Good design is obvious. Great design is transparent."
+];
+
+interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: string;
+  Icon: React.ElementType;
+  gradient: string;
+  tag?: string;
+}
+
+export const products: Product[] = [
+  {
+    id: 1,
+    title: "Essential Package",
+    description: "Perfect for startups and small businesses looking to establish their digital presence with elegance and simplicity.",
+    price: "$2,499",
+    Icon: Sparkles,
+    gradient: "from-amber-500/20 to-orange-500/20",
+    tag: "Most Popular"
+  },
+  {
+    id: 2,
+    title: "Premium Suite",
+    description: "Advanced features, custom animations, and full integration capabilities for growing brands ready to scale.",
+    price: "$4,999",
+    Icon: Zap,
+    gradient: "from-blue-500/20 to-purple-500/20",
+    tag: "Best Value"
+  },
+  {
+    id: 3,
+    title: "Enterprise Elite",
+    description: "End-to-end solution with dedicated support, advanced analytics, and enterprise-grade security.",
+    price: "$9,999",
+    Icon: Crown,
+    gradient: "from-emerald-500/20 to-teal-500/20",
+    tag: "Ultimate"
+  },
+  {
+    id: 4,
+    title: "Custom Solution",
+    description: "Tailored to your unique needs. Fully customizable features, design, and functionality.",
+    price: "Custom",
+    Icon: Star,
+    gradient: "from-rose-500/20 to-pink-500/20",
+    tag: "Flexible"
+  }
 ];

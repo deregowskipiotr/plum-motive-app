@@ -101,10 +101,10 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen flex flex-col items-center justify-center bg-(--color-plum) relative overflow-hidden py-20 md:py-0"
+      className="min-h-screen flex flex-col items-center justify-center bg-(--color-plum) relative overflow-hidden pt-20 md:pt-0"
     >
       {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-transparent via-(--color-plum)/10 to-black/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-l from-transparent via-(--color-plum)/10 to-black/10 pointer-events-none" />
       
       {/* Subtle ambient glow */}
       <div className="absolute inset-0 bg-radial-gradient from-(--color-milk)/5 via-transparent to-transparent opacity-30 pointer-events-none" />
@@ -242,7 +242,7 @@ const Contact = () => {
             </motion.div>
 
             {/* Social Icons section */}
-            <motion.div variants={rightItemVariants} className="mt-12 lg:mt-32">
+            <motion.div variants={rightItemVariants} className="mt-4 lg:mt-32">
               <p className="text-(--color-milk)/60 uppercase tracking-normal text-xs mb-4 font-light">
                 Connect with me
               </p>
@@ -269,7 +269,7 @@ const Contact = () => {
             {/* Go Home Indicator */}
             <motion.div
               variants={scrollLineVariants}
-              className="mt-16 lg:mt-auto flex justify-start lg:justify-end"
+              className="mt-4 lg:mt-auto flex justify-start lg:justify-end"
             >
               <div 
                 className="flex flex-col items-center gap-1.5 cursor-pointer group"
