@@ -452,7 +452,7 @@ const Hero = () => {
       >
         {/* Headline with per-letter spring physics */}
         <h1
-          className="text-5xl sm:text-7xl md:text-7xl lg:text-9xl font-semibold text-center leading-none md:tracking-tight hero-headline"
+          className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl font-semibold text-center leading-none md:tracking-tight hero-headline"
           style={{ cursor: hasFinePointer ? "grab" : "default" }}
         >
           {headline.split("").map((char, i) => (
@@ -477,7 +477,7 @@ const Hero = () => {
           variants={taglineVariants}
           initial="hidden"
           animate="visible"
-          className="mt-10 text-center text-base md:text-xl max-w-xl mx-auto leading-relaxed font-light hero-tagline"
+          className="mt-10 text-center text-base md:2text-xl max-w-xl mx-auto leading-relaxed font-light hero-tagline"
         >
           {tagline}
         </motion.p>

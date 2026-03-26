@@ -163,7 +163,7 @@ const Newsletter = () => {
           </motion.h2>
           <motion.p
             variants={subtitleVariants}
-            className="mt-4 text-(--color-milk)/60 text-base md:text-xl max-w-2xl mx-auto"
+            className="mt-4 text-(--color-milk)/60 text-base md:text-2xl max-w-2xl mx-auto"
           >
             Exclusive access to the Newsletter. Unlock insider insights, early releases, and curated wisdom.
           </motion.p>
