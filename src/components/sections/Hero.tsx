@@ -452,7 +452,7 @@ const Hero = () => {
       >
         {/* Headline with per-letter spring physics */}
         <h1
-          className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl md:px-75 px-0 font-semibold text-center leading-none md:tracking-tight hero-headline"
+          className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl md:px-90 px-0 font-semibold text-center leading-none md:tracking-tight hero-headline"
           style={{ cursor: hasFinePointer ? "grab" : "default" }}
         >
           {headline.split("").map((char, i) => (
