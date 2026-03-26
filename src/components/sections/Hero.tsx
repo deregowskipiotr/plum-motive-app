@@ -402,7 +402,7 @@ const Hero = () => {
     <section
       ref={sectionRef}
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-80 overflow-hidden select-none z-0"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-0 overflow-hidden select-none z-0"
       onMouseMove={hasFinePointer ? handleMouseMove : undefined}
       onMouseEnter={() => hasFinePointer && setIsHovering(true)}
       onMouseLeave={() => {
@@ -452,7 +452,7 @@ const Hero = () => {
       >
         {/* Headline with per-letter spring physics */}
         <h1
-          className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl font-semibold text-center leading-none md:tracking-tight hero-headline"
+          className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl md:px-75 px-0 font-semibold text-center leading-none md:tracking-tight hero-headline"
           style={{ cursor: hasFinePointer ? "grab" : "default" }}
         >
           {headline.split("").map((char, i) => (
@@ -477,7 +477,7 @@ const Hero = () => {
           variants={taglineVariants}
           initial="hidden"
           animate="visible"
-          className="mt-10 text-center text-base md:2text-xl max-w-xl mx-auto leading-relaxed font-light hero-tagline"
+          className="mt-10 md:mt-20 text-center text-base md:text-2xl max-w-xl md:max-w-3xl mx-auto leading-relaxed font-light hero-tagline"
         >
           {tagline}
         </motion.p>
